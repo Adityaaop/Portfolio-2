@@ -1,0 +1,42 @@
+[
+  {
+    "id": "thought-1789985288687-xsct5",
+    "name": "Laur",
+    "message": "Bhai bas v kr de ab!!",
+    "pinned": false,
+    "created_at": "2026-09-21T10:08:08.687Z",
+    "likes": 0,
+    "dislikes": 0,
+    "replies": []
+  },
+  {
+    "id": "thought-1789985114514-uldho",
+    "name": "Aakar",
+    "message": "Placement to nhi lag rhi Teri!!",
+    "pinned": false,
+    "created_at": "2026-09-21T10:05:14.514Z",
+    "likes": 0,
+    "dislikes": 0,
+    "replies": []
+  },
+  {
+    "id": "thought-1789985053919-wbk00",
+    "name": "Adarsh",
+    "message": "Kuch v krta hai!!",
+    "pinned": false,
+    "created_at": "2026-09-21T10:04:13.920Z",
+    "likes": 0,
+    "dislikes": 0,
+    "replies": []
+  },
+  {
+    "id": "welcome-thought",
+    "name": "Aditya",
+    "message": "Welcome to my Wall of Thoughts! Feel free to leave feedback, say hi, or share project ideas.",
+    "pinned": true,
+    "created_at": "2026-09-21T09:00:00.000Z",
+    "likes": 8,
+    "dislikes": 0,
+    "replies": []
+  }
+]

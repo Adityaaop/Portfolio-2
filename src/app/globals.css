@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-body), sans-serif;
+  
+  --font-hero: var(--font-hero), serif;
+  --font-heading: var(--font-heading), sans-serif;
+  --font-subheading: var(--font-subheading), serif;
+  --font-body: var(--font-body), sans-serif;
+  --font-doto: var(--font-doto), monospace;
+  --font-data: var(--font-data), monospace;
+  --font-ui: var(--font-ui), sans-serif;
+  --font-accent-bold: var(--font-accent-bold), sans-serif;
+  --font-handwritten: var(--font-handwritten), cursive;
+  --font-kalam: var(--font-kalam), cursive;
+
+  /* Aliases for compatibility with legacy classes */
+  --font-display: var(--font-heading), sans-serif;
+  --font-mono-accent: var(--font-data), monospace;
+  --font-tag: var(--font-ui), sans-serif;
+  --font-smokum: var(--font-subheading), serif;
+
+  --color-accent: #C0C0C0; /* silver */
+  --color-accent-hover: #F5F5F5; /* near-white */
+  --color-accent-glow: rgba(192, 192, 192, 0.25);
+  
+  --color-bg-black: #000000;
+  --color-bg-near-black: #0a0a0a;
+  --color-bg-panel: #111111;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #C0C0C0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5F5F5;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000000;
+  color: #E5E5E5;
+  overflow-x: hidden;
+  font-size: 17px;
+}
+
+body {
+  background-color: transparent;
+  color: #E5E5E5;
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Neutral glass panel styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.18); /* top border lighter highlight */
+  border-radius: 24px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(192, 192, 192, 0.4);
+  border-top-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 40px -10px rgba(192, 192, 192, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Soft white/gray radial glows at very low opacity (0.04) */
+.bg-glow-soft {
+  background: radial-gradient(circle 600px at 50% 50%, rgba(255, 255, 255, 0.04), transparent 80%);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { color: transparent }
+  50% { color: #C0C0C0 }
+}
+
+/* Graph-paper/pegboard grid pattern for Wall of Thoughts */
+.bg-grid-wall {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+}
+
+.bg-grid-wall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 2px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Make Doto body copy render at 500 medium by default */
+.font-body {
+  font-weight: 500;
+}
+
+/* Fix "too bold" button text for Jersey 15 */
+.font-tag {
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+
+/* GPU-accelerated Nebula breathing animations */
+@keyframes nebula-pulse-1 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.65;
+  }
+}
+
+@keyframes nebula-pulse-2 {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(15deg);
+    opacity: 0.6;
+  }
+}
+
+.animate-nebula-1 {
+  animation: nebula-pulse-1 25s ease-in-out infinite alternate;
+}
+
+.animate-nebula-2 {
+  animation: nebula-pulse-2 30s ease-in-out infinite alternate;
+}
