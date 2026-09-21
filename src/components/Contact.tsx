@@ -22,7 +22,24 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "fc1176d2-fba6-44c4-b0f2-63e0b429ae21";
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      const isPlaceholder =
+        !accessKey ||
+        accessKey === "fc1176d2-fba6-44c4-b0f2-63e0b429ae21" ||
+        accessKey === "your_web3forms_access_key_here";
+
+      if (isPlaceholder) {
+        const mailtoUrl = `mailto:adityamishra0578@gmail.com?subject=${encodeURIComponent(
+          `[Portfolio Contact] ${formData.subject.trim()}`
+        )}&body=${encodeURIComponent(
+          `Name: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\n\nMessage:\n${formData.message.trim()}`
+        )}`;
+        window.location.href = mailtoUrl;
+        showToast("Opening your email client to send directly to Aditya...", "success");
+        setIsSuccess(true);
+        setTimeout(() => setIsSuccess(false), 4000);
+        return;
+      }
 
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -43,6 +60,9 @@ export default function Contact() {
       const data = await res.json();
 
       if (!data.success) {
+        if (data.message && data.message.includes("Must be a valid UUID")) {
+          throw new Error("Invalid Web3Forms Access Key. Please provide a valid key from web3forms.com in .env.local.");
+        }
         throw new Error(data.message || "Failed to send message.");
       }
       
