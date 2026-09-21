@@ -279,7 +279,7 @@ export default function Hero() {
           >
             <div className="w-full h-full relative">
               <Image
-                src="/portrait.png"
+                src="/portrait.webp"
                 alt="Aditya Ranjan"
                 fill
                 priority
